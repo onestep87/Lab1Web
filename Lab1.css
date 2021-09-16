@@ -54,7 +54,7 @@ h1
 }
 
 footer {
-    background-color: rgba(43, 57, 189, 0.75);
+    background-color: hsla(50, 33%, 25%, .75);
     padding: 20px;
     display: flex;
     justify-content: end;
