@@ -147,13 +147,15 @@ document.querySelector('.top-left').addEventListener('blur', () =>  {
     applyAndSaveColor()
 })
 
-document.querySelector('.top-left').style.backgroundColor =
-    localStorage.getItem('t4-color') ?? document.querySelector('.top-left').style.backgroundColor
+document.querySelector('.top-left').style.borderColor =
+    localStorage.getItem('t4-color') ?? document.querySelector('.top-left').style.borderColor
 
 function applyAndSaveColor() {
     let color = document.querySelector('#t4-color-selector').value
-
-    document.querySelector('.top-left').style.backgroundColor = color
+    
+    document.getElementById("aside1").style.borderColor = color
+    document.getElementById("aside3").style.borderColor = color
+    document.getElementById("subcontainer").style.borderColor = color
     localStorage.setItem('t4-color', color)
 }
 
