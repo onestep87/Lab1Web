@@ -65,7 +65,6 @@ function setCookie(c_name, value, exdays) {
     var c_value = escape(value) + ((exdays == null) ? "" : "; expires=" + exdate.toUTCString());
     document.cookie = c_name + "=" + c_value;
 }
-document.cookie = "username=Max Brown";
 function getCookie(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
