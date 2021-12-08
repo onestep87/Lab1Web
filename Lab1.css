@@ -68,6 +68,7 @@ article {
 #subcontainer {
     display: flex;
     flex-direction: column;
+    border: 2px solid black;
 }
 
 .navbut {
@@ -93,6 +94,7 @@ article {
 
 #aside1 {
     background-color: rgba(218, 203, 176, 0.692);
+    border: 2px solid black;
 }
 #aside2 {
     background-color: rgb(130, 143, 57);

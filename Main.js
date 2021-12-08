@@ -143,9 +143,13 @@ function taskThree() {
     }
 } 
 // Task 4
+function myFunction() {
+    document.getElementById("aside1").style.borderColor = "lightblue";
+  }
+myFunction()
 let alignmentForm = boxOneContainer.getElementsByTagName('form')[0];
 let buttons = alignmentForm.getElementsByTagName('input');
-
+let  boxesBorderColor = "black";
 function checkButton(value) {
     for (let i = 0; i < buttons.length; i++) {
         if (buttons[i].value == value) {
