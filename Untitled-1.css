@@ -1,0 +1,34 @@
+body{
+    max-width:300px;
+    margin:0 auto;
+    text-align: center;
+  }
+  h3{
+    font-size:18px;
+    text-transform: uppercase;
+  }
+  p{
+    font-size: 14px;
+  }
+  .inside-block{
+    padding: 15px;
+    border: 3px dashed;
+  }
+  .left{
+    border-color: #0c7fd7;
+  }
+  .right{
+    border-color: #fab23a;
+  }
+  button{
+    position: relative;
+      padding: 6px 40px 10px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-bottom: 3px solid #0c7fd7;
+      cursor: pointer;
+      margin: 30px auto;
+  }
+  button:hover{
+    border-bottom-color: #fab23a;
+  }
