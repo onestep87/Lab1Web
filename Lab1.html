@@ -29,9 +29,16 @@
             </aside>
             <div id="subcontainer">
                 <aside id="aside2">
-                    Yeah, you are looking right on me At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
-
-                    Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
+                    <select class="caseschange" name="caseschange">
+                        <option value="0">Choose...</option>
+                        <option value="1">To lower case</option>
+                        <option value="2">To upper case</option>
+                    </select>
+                    <label>Save case option?</label>  
+                    <form action="alert('asd')">
+                        <input type='radio' name="savetheoption" value="1" checked="checked"/> Yes
+                        <input type='radio' name="savetheoption" value="0"/> No
+                    </form>
                  <!--<form name="dividers" action="">
                                     <label>Enter here: </label>
                                     <input id="enterarea" type="text">
@@ -53,6 +60,7 @@
                     <p id="task-three">
                         <input type="text" name="data-to-reverse">
                         <button onclick="taskThree()">Calculate</button>
+                        <button onclick="TaskFour()">Calculate</button>
 
                     </p>
                     <p>
