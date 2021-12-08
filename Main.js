@@ -143,13 +143,24 @@ function taskThree() {
     }
 } 
 // Task 4
-function myFunction() {
-    document.getElementById("aside1").style.borderColor = "lightblue";
-  }
+document.querySelector('.top-left').addEventListener('blur', () =>  {
+    applyAndSaveColor()
+})
+
+document.querySelector('.top-left').style.backgroundColor =
+    localStorage.getItem('t4-color') ?? document.querySelector('.top-left').style.backgroundColor
+
+function applyAndSaveColor() {
+    let color = document.querySelector('#t4-color-selector').value
+
+    document.querySelector('.top-left').style.backgroundColor = color
+    localStorage.setItem('t4-color', color)
+}
+
 myFunction()
 let alignmentForm = boxOneContainer.getElementsByTagName('form')[0];
 let buttons = alignmentForm.getElementsByTagName('input');
-let  boxesBorderColor = "black";
+
 function checkButton(value) {
     for (let i = 0; i < buttons.length; i++) {
         if (buttons[i].value == value) {
