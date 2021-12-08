@@ -3,7 +3,7 @@ let table_6 = document.getElementById("aside3");
 let table_5 = document.getElementById("article");
 let table_7 = document.getElementById("story");
 let boxThreeContainer = document.getElementById("task-three")
-let boxOneContainer = document.getElementById("aside2")[0];
+let boxOneContainer = document.getElementsByClassName('subcontainer')[0];
 var cout = 0;
 var sw_cou = 2;
 //1-st task
@@ -143,60 +143,66 @@ function taskThree() {
     }
 } 
 // Task 4
-const input = document.querySelector('input');
-let table_4_cont = document.getElementById("aside2").childNodes[1];
+let alignmentForm = boxOneContainer.getElementsByTagName('form')[0];
+let buttons = alignmentForm.getElementsByTagName('input');
 
-const selectElement = document.querySelector('.caseschange');
-
-selectElement.addEventListener('change', (event) => {
-    if(event.target.value == '1')
-    {
-        table_4_cont.textContent = decapitalize(table_4_cont.textContent);
-    }
-    else{
-        table_4_cont.textContent = capitalize(table_4_cont.textContent);
-    }
-});
-
-var radio_key = 0;
-function capitalize(str) {
-    radio_key=1;
-    Save();
-    return str.replace(/(^|\s)\S/g, function(a) {return a.toUpperCase()})
-}
-function decapitalize(str) {
-    radio_key=0;
-    Save();    
-    return str.replace(/(^|\s)\S/g, function(a) {return a.toLowerCase()})
-}
-
-function Save()
-{
-    for (var i = 0, length = radios.length; i < length; i++) {
-        if (radios[i].checked) {
-            if(radios[i].value=='1')
-            {
-                localStorage.setItem('test', radio_key.toString());
-            }
-            else if(radios[i].value=='0'){
-                delete localStorage.test;
-            }
-            else{return;}
+function checkButton(value) {
+    for (let i = 0; i < buttons.length; i++) {
+        if (buttons[i].value == value) {
+            buttons[i].checked = true;
+            break;
         }
     }
 }
-var radios = document.getElementsByName('savetheoption');
 
-function Startcase()
-{
-    if(localStorage.test == '1'){
-        table_4_cont.textContent = capitalize(table_4_cont.textContent);
-    }
-    else if(localStorage.test == '0'){
-        table_4_cont.textContent = decapitalize(table_4_cont.textContent);
-    }
-    else{
-        return;
+function alignBoxContent() {
+    for (let i = 0; i < buttons.length; i++) {
+        let button = buttons[i];
+        if (button.checked) {
+            document.getElementById("aside1").style.borderColor = boxesBorderColor;
+            localStorage.setItem("color", button.value);
+        }
+        else {
+            document.getElementsByClassName(button.value)[0].style.alignItems = "center";
+        }
     }
 }
-Startcase();
+function changeBoxesBorderColor(){
+    for (let i = 1; i < 7; i++){
+        document.getElementById("box "+i).style.borderColor = boxesBorderColor;
+    }
+}
+if (localStorage.getItem("color") != "") {
+    checkButton(localStorage.getItem("color"));
+}
+
+alignBoxContent();
+
+
+
+
+
+let  boxesBorderColor = "black";
+
+if (localStorage.color !== null){
+    boxesBorderColor = localStorage.color;
+    changeBoxesBorderColor();
+}
+
+function getColorNameFromUser(){
+    boxesBorderColor = prompt("define color: ", boxesBorderColor)
+    if (localStorage.color !== null){
+        delete localStorage.color;
+    }
+    localStorage.setItem("color", boxesBorderColor);
+}
+
+function changeBoxesBorderColor(){
+    for (let i = 1; i < 7; i++){
+        document.getElementById("box "+i).style.borderColor = boxesBorderColor;
+    }
+}
+
+let input = document.getElementById("input");
+input.addEventListener('click', getColorNameFromUser);
+input.addEventListener('focus', changeBoxesBorderColor);

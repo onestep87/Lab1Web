@@ -27,24 +27,22 @@
                     <p> Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
                 </p>
             </aside>
-            <div id="subcontainer">
-                <aside id="aside2">
-                    <select class="caseschange" name="caseschange">
-                        <option value="0">Choose...</option>
-                        <option value="1">To lower case</option>
-                        <option value="2">To upper case</option>
-                    </select>
-                    <label>Save case option?</label>  
-                    <form action="alert('asd')">
-                        <input type='radio' name="savetheoption" value="1" checked="checked"/> Yes
-                        <input type='radio' name="savetheoption" value="0"/> No
+            <div class="subcontainer">                
+                    <form>
+                        <p>Left-side alignment for: </p>
+                        <input type="radio" id="box-two" name="left-alignment" value="box two" onclick="alignBoxContent()">
+                            <label for="box-two">Box Two</label>
+                        <input type="radio" id="box-three" name="left-alignment" value="box three" onclick="alignBoxContent()">
+                            <label for="box-three">Box Three</label>
+                        <input type="radio" id="box-four" name="left-alignment" value="box four" onclick="alignBoxContent()">
+                            <label for="box-four">Box Four</label>
                     </form>
                  <!--<form name="dividers" action="">
                                     <label>Enter here: </label>
                                     <input id="enterarea" type="text">
                                     <input id="enterbutton" type="button" value="enter">
                                 </form>-->
-                </aside>
+               
                 <article id="article" class="flexbox">
                     <div id="story">
                     <p>
