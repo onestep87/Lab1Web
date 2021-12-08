@@ -3,6 +3,7 @@ let table_6 = document.getElementById("aside3");
 let table_5 = document.getElementById("article");
 let table_7 = document.getElementById("story");
 let boxThreeContainer = document.getElementById("task-three")
+let boxOneContainer = document.getElementById("aside2")[0];
 var cout = 0;
 var sw_cou = 2;
 //1-st task
@@ -141,3 +142,61 @@ function taskThree() {
         drawTaskThreeInput(false);
     }
 } 
+// Task 4
+const input = document.querySelector('input');
+let table_4_cont = document.getElementById("aside2").childNodes[1];
+
+const selectElement = document.querySelector('.caseschange');
+
+selectElement.addEventListener('change', (event) => {
+    if(event.target.value == '1')
+    {
+        table_4_cont.textContent = decapitalize(table_4_cont.textContent);
+    }
+    else{
+        table_4_cont.textContent = capitalize(table_4_cont.textContent);
+    }
+});
+
+var radio_key = 0;
+function capitalize(str) {
+    radio_key=1;
+    Save();
+    return str.replace(/(^|\s)\S/g, function(a) {return a.toUpperCase()})
+}
+function decapitalize(str) {
+    radio_key=0;
+    Save();    
+    return str.replace(/(^|\s)\S/g, function(a) {return a.toLowerCase()})
+}
+
+function Save()
+{
+    for (var i = 0, length = radios.length; i < length; i++) {
+        if (radios[i].checked) {
+            if(radios[i].value=='1')
+            {
+                localStorage.setItem('test', radio_key.toString());
+            }
+            else if(radios[i].value=='0'){
+                delete localStorage.test;
+            }
+            else{return;}
+        }
+    }
+}
+var radios = document.getElementsByName('savetheoption');
+
+function Startcase()
+{
+    if(localStorage.test == '1'){
+        table_4_cont.textContent = capitalize(table_4_cont.textContent);
+    }
+    else if(localStorage.test == '0'){
+        table_4_cont.textContent = decapitalize(table_4_cont.textContent);
+    }
+    else{
+        return;
+    }
+}
+Startcase();
