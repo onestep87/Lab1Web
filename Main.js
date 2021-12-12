@@ -158,68 +158,95 @@ function applyAndSaveColor() {
     document.getElementById("subcontainer").style.borderColor = color
     localStorage.setItem('t4-color', color)
 }
+//Task 5
+function task5() {
+    let selectText = document.createElement("p")
+    selectText.innerText = "Menu: "
+    
+    let enterTagInput = document.createElement("input")
+    enterTagInput.setAttribute("class", "input-tag")
+    
+    center = document.getElementById("story")
+    center.appendChild(document.createElement("br"))
+    center.appendChild(document.createElement("br"))
+    
+    let enterTagLabel = document.createElement("p")
+    enterTagLabel.innerText = "Enter tag and stylesheet: "
+    center.appendChild(enterTagLabel)
+    center.appendChild(enterTagInput)
 
-myFunction()
-let alignmentForm = boxOneContainer.getElementsByTagName('form')[0];
-let buttons = alignmentForm.getElementsByTagName('input');
+    // add area to enter the text
+    center.appendChild(document.createElement("br"))
+    let styleText = document.createElement("textarea")
+    styleText.setAttribute("class", "style-sheet-text")
+    styleText.setAttribute("cols", "40")
+    styleText.setAttribute("rows", "10")
+    center.appendChild(styleText)
 
-function checkButton(value) {
-    for (let i = 0; i < buttons.length; i++) {
-        if (buttons[i].value == value) {
-            buttons[i].checked = true;
-            break;
+    // set button to set style
+    center.appendChild(document.createElement("br"))
+    let setBtn = document.createElement("button")
+    setBtn.innerText = "set"
+    setBtn.onclick = () => {
+        let tag = document.querySelector('.input-tag').value;
+        let styles = document.querySelector(".style-sheet-text").value
+
+        if(tag != "" && styles != "") {
+            // get arr from storage
+            let arr = []
+            if(window.localStorage.getItem("tags") != "" && window.localStorage.getItem("tags") != undefined) {
+                arr = JSON.parse(window.localStorage["tags"])
+            } else {
+                arr = []
+            }
+            
+            // push to arr new elem or not push if it exists
+            if(!arr.includes(tag)) {
+                arr.push(tag)
+            }
+            window.localStorage.setItem("tags", JSON.stringify(arr))
+            
+            // save new styles in storage
+            window.localStorage.setItem(tag, styles);
+
+            // set new styles
+            let elems = document.getElementsByTagName(tag)
+            for (let i = 0; i < elems.length; i++) {
+                elems[i].style.cssText = styles
+            }
         }
-    }
-}
 
-function alignBoxContent() {
-    for (let i = 0; i < buttons.length; i++) {
-        let button = buttons[i];
-        if (button.checked) {
-            document.getElementById("aside1").style.borderColor = boxesBorderColor;
-            localStorage.setItem("color", button.value);
+        console.log(tag)
+    }
+    center.appendChild(setBtn)
+
+    let clearBtn = document.createElement("button")
+    clearBtn.innerText = "clear"
+    clearBtn.onclick = () => {
+        let tag = document.querySelector('.input-tag').value;
+        let styles = document.querySelector(".style-sheet-text").value
+
+
+        let arr = []
+        if(window.localStorage["tags"] != "" && window.localStorage["tags"] != undefined) {
+            arr = JSON.parse(window.localStorage["tags"])
+        } else {
+            arr = []
         }
-        else {
-            document.getElementsByClassName(button.value)[0].style.alignItems = "center";
+        
+        // clear here styles
+        for(let i = 0; i < arr.length; i++) {
+            let tag = arr[i]
+            window.localStorage.removeItem(tag)
+            
+            let elems = document.getElementsByTagName(tag)
+            for (let i = 0; i < elems.length; i++) {
+                elems[i].style.cssText = ""
+            }
         }
+        arr = []
+
+        location.reload()
     }
+    center.appendChild(clearBtn)
 }
-function changeBoxesBorderColor(){
-    for (let i = 1; i < 7; i++){
-        document.getElementById("box "+i).style.borderColor = boxesBorderColor;
-    }
-}
-if (localStorage.getItem("color") != "") {
-    checkButton(localStorage.getItem("color"));
-}
-
-alignBoxContent();
-
-
-
-
-
-let  boxesBorderColor = "black";
-
-if (localStorage.color !== null){
-    boxesBorderColor = localStorage.color;
-    changeBoxesBorderColor();
-}
-
-function getColorNameFromUser(){
-    boxesBorderColor = prompt("define color: ", boxesBorderColor)
-    if (localStorage.color !== null){
-        delete localStorage.color;
-    }
-    localStorage.setItem("color", boxesBorderColor);
-}
-
-function changeBoxesBorderColor(){
-    for (let i = 1; i < 7; i++){
-        document.getElementById("box "+i).style.borderColor = boxesBorderColor;
-    }
-}
-
-let input = document.getElementById("input");
-input.addEventListener('click', getColorNameFromUser);
-input.addEventListener('focus', changeBoxesBorderColor);
