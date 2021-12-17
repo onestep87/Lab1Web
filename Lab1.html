@@ -29,36 +29,6 @@
                 </p>
             </aside>
             <div id = "subcontainer" class="subcontainer">   
-                             
-                    <form>
-                        <p>Left-side alignment for: </p>
-                        <input type="radio" id="box-two" name="left-alignment" value="box two" onclick="alignBoxContent()">
-                            <label for="box-two">Box Two</label>
-                        <input type="radio" id="box-three" name="left-alignment" value="box three" onclick="alignBoxContent()">
-                            <label for="box-three">Box Three</label>
-                        <input type="radio" id="box-four" name="left-alignment" value="box four" onclick="alignBoxContent()">
-                            <label for="box-four">Box Four</label>
-                    </form>
-                    <button onclick="myFunction()">Try it</button>
-                    <script>
-                        function myFunction() {                        
-                          document.getElementById("aside1").style.borderColor = "lightblue";
-                          boxesBorderColor = prompt("define color: ", boxesBorderColor)
-                          if (localStorage.color !== null)
-                          {
-                            delete localStorage.color;
-                          }
-                          else{
-                          localStorage.setItem("color", boxesBorderColor);
-                        }
-                        }
-                        </script> 
-                 <!--<form name="dividers" action="">
-                                    <label>Enter here: </label>
-                                    <input id="enterarea" type="text">
-                                    <input id="enterbutton" type="button" value="enter">
-                                </form>-->
-               
                 <article id="article" class="flexbox">
                     <div id="story">
                     <p>
