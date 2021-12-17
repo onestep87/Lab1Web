@@ -166,7 +166,7 @@ function task5() {
     let enterTagInput = document.createElement("input")
     enterTagInput.setAttribute("class", "input-tag")
     
-    center = document.getElementById("story")
+    center = document.querySelector(".center-menu")
     center.appendChild(document.createElement("br"))
     center.appendChild(document.createElement("br"))
     
